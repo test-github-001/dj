@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://cl7ebfsiul36v"]
+
+[ext_resource type="Texture2D" uid="uid://d1hhlj3qvvv5j" path="res://Assets/Images/Player/Default/Body/left.png" id="1_55lj8"]
+[ext_resource type="Script" uid="uid://b513mbbewglgk" path="res://Characters/player.gd" id="1_qhb0e"]
+[ext_resource type="Texture2D" uid="uid://bdgevnp2upu0" path="res://Assets/Images/Player/Default/Body/left_jump.png" id="2_qhb0e"]
+[ext_resource type="Texture2D" uid="uid://cgwq803gu5d7c" path="res://Assets/Images/Player/Default/Body/right.png" id="3_7pihf"]
+[ext_resource type="Texture2D" uid="uid://dbpu47nqd4kfj" path="res://Assets/Images/Player/Default/Body/right_jump.png" id="4_c3bgu"]
+[ext_resource type="Texture2D" uid="uid://c5etqcuqrk4ht" path="res://Assets/Images/Player/Default/Body/shoot.png" id="5_nwlvs"]
+[ext_resource type="Texture2D" uid="uid://dkl06j3j8j6le" path="res://Assets/Images/Player/Default/Body/shoot_jump.png" id="6_x35ji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8u7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_55lj8")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qhb0e")
+}],
+"loop": true,
+"name": &"left_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7pihf")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_c3bgu")
+}],
+"loop": true,
+"name": &"right_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nwlvs")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x35ji")
+}],
+"loop": true,
+"name": &"shoot_jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lli6r"]
+radius = 16.0
+height = 56.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_qhb0e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o8u7c")
+animation = &"shoot_jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_lli6r")
